@@ -7,8 +7,8 @@ Link: https://adventofcode.com/2022/day/3
 
 
 def full_overlap(pair1, pair2):
-    p1 = [int(num) for num in pair1.split('-')]
-    p2 = [int(num) for num in pair2.split('-')]
+    p1 = [int(num) for num in pair1.split("-")]
+    p2 = [int(num) for num in pair2.split("-")]
     p1_start = p1[0]
     p1_end = p1[1]
     p2_start = p2[0]
