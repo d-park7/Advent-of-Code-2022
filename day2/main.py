@@ -70,4 +70,4 @@ if __name__ == "__main__":
 
         total_points += calculate_round_points(opponent, player)
 
-    print(total_points)
+    print(f"Total Points: {total_points}")

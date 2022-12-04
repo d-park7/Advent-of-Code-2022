@@ -46,4 +46,4 @@ if __name__ == "__main__":
         player = player_move[move[2]]
         total_points += calculate_round_points(opponent, player)
 
-    print(total_points)
+    print(f"Total points: {total_points}")
