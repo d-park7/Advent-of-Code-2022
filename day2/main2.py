@@ -3,28 +3,12 @@ Day 2: Rock Paper Scissors (Part 2)
 
 Link to Problem: https://adventofcode.com/2022/day/2
 """
-opp_move = {
-    'A': 'R',
-    'B': 'P',
-    'C': 'S'
-}
+from main import opp_move, player_choice, result_map
 
 player_move = {
     'X': 'L',
     'Y': 'D',
     'Z': 'W'
-}
-
-player_choice = {
-    'R': 1,
-    'P': 2,
-    'S': 3,
-}
-
-result_map = {
-    'W': 6,
-    'D': 3,
-    'L': 0,
 }
 
 
