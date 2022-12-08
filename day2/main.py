@@ -28,27 +28,14 @@ result_map = {
 }
 
 def calculate_result_points(opponent, player):
-    if opponent == 'R':
-        if player == 'R':
-            result = 'D'
-        elif player == 'P':
-            result = 'W'
-        elif player == 'S':
-            result = 'L'
-    elif opponent == 'P':
-        if player == 'R':
-            result = 'L'
-        elif player == 'P':
-            result = 'D'
-        elif player == 'S':
-            result = 'W'
-    elif opponent == 'S':
-        if player == 'R':
-            result = 'W'
-        elif player == 'P':
-            result = 'L'
-        elif player == 'S':
-            result = 'D'
+    r = opponent + player
+
+    if r == 'RR' or r == 'PP' or r == 'SS':
+        result = 'D'
+    elif r == 'RP' or r == 'PS' or r == 'SR':
+        result = 'W'
+    elif r == 'PR' or r == 'SP' or r == 'RS':
+        result = 'L'
 
     return result_map[result]
 
