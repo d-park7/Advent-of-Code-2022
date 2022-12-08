@@ -10,7 +10,6 @@ def is_unique(buffer):
 if __name__ == "__main__":
     buffer = deque()
 
-    num_chars = -1
     with open('input.txt', 'rt') as file:
         line = file.read()
 
