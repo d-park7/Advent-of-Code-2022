@@ -8,7 +8,18 @@ from main import opp_move, player_choice, result_map
 player_move = {
     'X': 'L',
     'Y': 'D',
-    'Z': 'W'
+    'Z': 'W',
+}
+
+player_win_choice = {
+    'R': 'P',
+    'P': 'S',
+    'S': 'R',
+}
+player_lose_choice = {
+    'R': 'S',
+    'P': 'R',
+    'S': 'P',
 }
 
 
@@ -16,21 +27,11 @@ def calculate_round_points(opponent, player):
     player_mv = ''
 
     if player == 'L':
-        if opponent == 'R':
-            player_mv = 'S'
-        elif opponent == 'P':
-            player_mv = 'R'
-        elif opponent == 'S':
-            player_mv = 'P'
+        player_mv = player_lose_choice[opponent]
     elif player == 'D':
         player_mv = opponent
     elif player == 'W':
-        if opponent == 'R':
-            player_mv = 'P'
-        elif opponent == 'P':
-            player_mv = 'S'
-        elif opponent == 'S':
-            player_mv = 'R'
+        player_mv = player_win_choice[opponent]
 
     return result_map[player] + player_choice[player_mv]
 
