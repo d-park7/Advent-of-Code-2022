@@ -5,7 +5,7 @@
 calories = 0
 max = 0
 
-with open('input.txt') as file:
+with open('Day 1/input.txt') as file:
     for line in file:
         line = line.replace('\n', '')
         if line == '':
@@ -14,3 +14,6 @@ with open('input.txt') as file:
             calories = 0
         elif line != '':
             calories += int(line)
+
+
+print(max)
