@@ -12,11 +12,13 @@ class Point:
 
 
 # Holds a pair of x,y coordinates and visited status
-grid = dict()
+visited = dict()
 
 if __name__ == "__main__":
     
-    curr = Point(0, 0)
-    grid[curr] = True
+    head = Point(0, 0)
+    tail = Point(0, 0)
+    visited[tail] = True
 
     # Update current point as the head moves, update tail and add to dictionary of visited points
+    
