@@ -13,10 +13,7 @@ local function is_completely_overlapped (r1, r2)
 end
 
 local function is_overlapped (r1, r2)
-  if math.max(r1.left, r2.left) <= math.min(r1.right, r2.right) then
-    return true
-  end
-  return false
+  return math.max(r1.left, r2.left) <= math.min(r1.right, r2.right)
 end
 
 local function part_one_and_two (filename)
