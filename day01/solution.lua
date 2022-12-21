@@ -5,7 +5,7 @@ local rations = {}
 local elf = {}
 
 for line in io.lines() do
-  if string.match(line, "^%w") then -- math on alphanumeric character
+  if string.match(line, "^%w") then -- match on alphanumeric character
     table.insert(elf, line)
   else
     table.insert(rations, elf)

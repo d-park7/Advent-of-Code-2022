@@ -1,3 +1,4 @@
+-- Day 2: Rock Paper Scissors
 local score_round = function(left, right)
   -- returns the score of `right`
   -- rock = 1
