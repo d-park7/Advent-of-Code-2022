@@ -35,7 +35,7 @@ local function move_crate (line)
   print("move", n_crates, "crates", "from", from, "to", to)
 end
 
-local function print_stacks(stacks)
+local function pretty_print_stacks(stacks)
   local max_stack_height = 0
   for i=1,#stacks do
     local h = #stacks[i]
@@ -46,7 +46,7 @@ local function print_stacks(stacks)
 
   for j=max_stack_height,1,-1 do
     local row = {}
-    for k, v in ipairs(stacks) do
+    for _, v in ipairs(stacks) do
       if j <= #v then
         table.insert(row, "["..v[j].."]")
       else
@@ -69,7 +69,7 @@ local function part_one (filename)
       print(line)
       stacks = parse_starting_stacks(line, stacks)
     else
-      print_stacks(stacks)
+      pretty_print_stacks(stacks)
     end
   end
 end
