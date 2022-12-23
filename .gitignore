@@ -2,3 +2,5 @@ __pycache__/
 .venv/
 venv/
 script.txt
+
+day10/temp.py
