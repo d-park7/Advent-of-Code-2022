@@ -54,7 +54,6 @@ def travel(start, end):
         pass  # Logic for adding new neighbor nodes here
 
   
-  
 travel(start, end) 
   
   
