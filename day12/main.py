@@ -40,7 +40,6 @@ for row in range(len(grid)):
 
 # Start and end are nodes containing (x, y, visited) position on grid
 def travel(start, end):
-  visited = set()
   pq = [] 
   heappush(pq, start)   # Push start node onto queue  
   
