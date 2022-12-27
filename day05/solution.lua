@@ -17,22 +17,13 @@ local function parse_starting_stacks (line, stacks)
     local crate = string.sub(line, i, i)
     -- print("crate: "..crate)
     -- print("stack num: "..stack_num)
-    if string.match(crate, "%a") then
+    if string.match(crate, "%a") then -- crate contains alphabet, exclude last numbers
       -- print("insert crate "..crate.." to stack "..stack_num)
       table.insert(stacks[stack_num], 1, crate)
     end
     stack_num = stack_num + 1
   end
   return stacks
-end
-
-local function move_crate (line)
-  local move = {}
-  for number in string.gmatch(line, "%d+") do
-    table.insert(move, tonumber(number))
-  end
-  local n_crates, from, to = table.unpack(move)
-  print("move", n_crates, "crates", "from", from, "to", to)
 end
 
 local function pretty_print_stacks(stacks)
@@ -44,6 +35,7 @@ local function pretty_print_stacks(stacks)
     end
   end
 
+  print("Stack:")
   for j=max_stack_height,1,-1 do
     local row = {}
     for _, v in ipairs(stacks) do
@@ -57,21 +49,50 @@ local function pretty_print_stacks(stacks)
   end
 end
 
-local function part_one (filename)
+local function move_crate (line, stacks, verbose, cratemover)
+  local move = {}
+  for number in string.gmatch(line, "%d+") do -- find numbers in line
+    table.insert(move, tonumber(number))
+  end
+  local n_crates, from, to = table.unpack(move)
+  print("move", n_crates, "crates", "from", from, "to", to)
+  for i=1,n_crates do
+    if cratemover == 9000 then
+      table.insert(stacks[to], table.remove(stacks[from]))
+    elseif cratemover == 9001 then
+      table.insert(stacks[to], #stacks[to]+2-i, table.remove(stacks[from]))
+    end
+  end
+  if verbose then
+    pretty_print_stacks(stacks)
+  end
+  return stacks
+end
+
+local function main (filename, cratemover)
   io.input(filename)
   local stacks = {}
   print("Starting stacks")
   for line in io.lines() do
-    if string.match(line, "^m") then
-      move_crate(line)
+    if string.match(line, "^m") then  -- line starts with "m"
+      stacks = move_crate(line, stacks, true, cratemover)
       -- move block
-    elseif string.match(line, "%w") then
+    elseif string.match(line, "%w") then -- line contains alphanumeric
       print(line)
       stacks = parse_starting_stacks(line, stacks)
     else
       pretty_print_stacks(stacks)
     end
   end
+
+  -- print top of each stacks
+  for i=1,#stacks do
+    local len = #stacks[i]
+    print(stacks[i][len])
+  end
+
 end
 
-part_one("testinput.txt")
+--main("input.txt", 9000)
+
+main("input.txt", 9001)
