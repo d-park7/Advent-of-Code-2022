@@ -37,9 +37,7 @@ if __name__ == "__main__":
 
             previous_appended_char = None
             for x in first_half:
-                print(x)
                 for y in second_half:
-                    print(y)
                     if x == y and x != previous_appended_char:
                         previous_appended_char = x
                         duplicates.append(x)
