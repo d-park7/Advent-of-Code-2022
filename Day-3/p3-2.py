@@ -18,29 +18,32 @@ def generate_points_map():
     return point_map
 
 
-def calculate_points(groups: list):
+# used Mark's solution bc mine was terrible
+def calculate_points(rucksacks: list):
     point_map = generate_points_map()
     points = 0
-    counter = 0
-    # TODO: figure out what is wrong with this loop
-    for elf in groups:
-        if (counter + 1) % 3 == 0:
-            for x in groups[counter - 2]:
-                for y in groups[counter - 1]:
-                    for z in groups[counter]:
-                        if x == y and x == z and y == z:
-                            points += int(point_map.get(x))
-        counter += 1
+
+    for index in range(0, len(rucksacks), 3):
+        set1 = set()
+        set2 = set()
+        set3 = set()
+        
+        for letter in rucksacks[index]:
+            set1.add(letter)
+        for letter in rucksacks[index + 1]:
+            set2.add(letter)
+        for letter in rucksacks[index + 2]:
+            set3.add(letter)
+
+        result = set1.intersection(set2, set3)
+        for letter in result:
+            points += int(point_map.get(letter))
 
     return points
 
 
 if __name__ == "__main__":
     with open('Day-3/input.txt') as file:
-        groups = []
-        for line in file:
-            line = line.strip()
-            groups.append([line])
-            
-        points = calculate_points(groups)
+        rucksacks = file.read().splitlines()
+        points = calculate_points(rucksacks)
         print(points)
